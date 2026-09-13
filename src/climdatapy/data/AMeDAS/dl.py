@@ -98,8 +98,8 @@ def make_AMeDAS(date, stats_type, prec_no, block_no, obs_no, lat, lon, height):
 
     if a_type == 'a':
       pressure = {
-        '現地気圧':['-99.9'] * len(df),
-        '海面気圧':['-99.9'] * len(df),
+        '現地気圧':['-99.0'] * len(df),
+        '海面気圧':['-99.0'] * len(df),
       }
       pressure = pd.DataFrame(pressure)
       df = pd.concat([pressure, df], axis=1)
@@ -145,10 +145,10 @@ def make_AMeDAS(date, stats_type, prec_no, block_no, obs_no, lat, lon, height):
         df.insert(insert_no, '全天日射量', ['-99.0'] * len(df))
 
         tmp = {
-          '平均雲量': ['-99.9'] * len(df),
-          '雪日数': ['-99.9'] * len(df),
-          '霧日数': ['-99.9'] * len(df),
-          '雷日数': ['-99.9'] * len(df),
+          '平均雲量': ['-99.0'] * len(df),
+          '雪日数': ['-99.0'] * len(df),
+          '霧日数': ['-99.0'] * len(df),
+          '雷日数': ['-99.0'] * len(df),
         }
         df = pd.concat([df, pd.DataFrame(tmp)], axis=1)
 
@@ -166,10 +166,10 @@ def _fetch_AMeDAS(url):
             dfs = pd.read_html(url)
             df = dfs[0]
             df = df.fillna('-99.0')
-            df = df.replace(['///', '--', '×', '#'], '-99.0')
             for col in df.columns:
                 df[col] = df[col].astype(str).apply(split_space)
                 df[col] = df[col].astype(str).apply(wind_direction)
+            df = df.replace(['///', '--', '×', '#'], '-99.0')
             flag = 0
             return df
         except ValueError:
