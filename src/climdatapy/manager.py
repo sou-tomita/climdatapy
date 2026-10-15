@@ -14,6 +14,8 @@ DATASET_REGISTRY = {
     "MODIS": data.MODIS,
     "OSTIA": data.OSTIA,
     "HadISST": data.HadISST,
+    "AMeDAS": data.AMeDAS,
+    "CERES": data.CERES,
 }
 
 

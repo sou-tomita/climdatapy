@@ -9,3 +9,5 @@ from .HIMSST.dataset import HIMSST
 from .MGDSST.dataset import MGDSST
 from .OSTIA.dataset import OSTIA
 from .HadISST.dataset import HadISST
+from .AMeDAS.dataset import AMeDAS
+from .CERES.dataset import CERES

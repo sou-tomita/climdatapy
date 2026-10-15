@@ -182,3 +182,5 @@ manager.update(
 |[```sample/update_JRA3Q.py```](./sample/update_JRA3Q.py)|JRA3Qの更新|
 |[```sample/download_MODIS.py```](./sample/download_MODIS.py)|MODISのダウンロード|
 |[```sample/update_MODIS.py```](./sample/update_MODIS.py)|MODISの更新|
+# 4. Author
+- [So Tomita](https://github.com/sotomita)
