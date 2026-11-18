@@ -34,7 +34,15 @@ def __get_file_name(
         start_date = datetime(year, month, 1, 18)
     else:
         start_date = datetime(year, month, 1, 0)
-    tail_date = get_tail_time(year, month, **kwargs)
+
+    if data_kind == "bnd_ocean125":
+        var_name = f"{var}-fc-ll125"
+        tail_date = get_tail_time(
+            year, month, dt=timedelta(hours=1)
+        )
+    else:
+        var_name = f"{var}-an-ll125"
+        tail_date = get_tail_time(year, month, **kwargs)
 
     mn_or_std = "sd" if std else "mn"
 
@@ -42,17 +50,17 @@ def __get_file_name(
 
     if stats_type == "instant":
         fname = (
-            f"jra3q.{data_kind}.{code[0]}_{code[1]}_{code[2]}.{var}-an-ll125"
+            f"jra3q.{data_kind}.{code[0]}_{code[1]}_{code[2]}.{var_name}"
             f".{start_date.strftime('%Y%m%d%H')}_{tail_date.strftime('%Y%m%d%H')}.nc"
         )
     elif stats_type == "monthly":
         fname = (
-            f"jra3q-ms-{mn_or_std}.{data_kind}.{code[0]}_{code[1]}_{code[2]}.{var}-an-ll125-{mn_or_std}"
+            f"jra3q-ms-{mn_or_std}.{data_kind}.{code[0]}_{code[1]}_{code[2]}.{var_name}-{mn_or_std}"
             f".{start_date.strftime('%Y%m%d%H')}_{tail_date.strftime('%Y%m%d%H')}.nc"
         )
     elif stats_type == "diurnal":
         fname = (
-            f"jra3q-ds-{mn_or_std}.{data_kind}.{code[0]}_{code[1]}_{code[2]}.{var}-an-ll125-{mn_or_std}"
+            f"jra3q-ds-{mn_or_std}.{data_kind}.{code[0]}_{code[1]}_{code[2]}.{var_name}-{mn_or_std}"
             f".{start_date.strftime('%Y%m%d%H')}_{tail_date.strftime('%Y%m%d%H')}.nc"
         )
 
