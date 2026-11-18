@@ -55,4 +55,11 @@ code_dict = {
     "anl_snow125": {
         "snod-sfc": [0, 1, 11],
     },
+        
+    "bnd_ocean125": {
+        "icec-sfc": [10, 2, 0],
+        "icetmp-bsl": [10, 2, 8],
+        "icetmp-sfc": [10, 2, 8],
+        "wtmp-sfc": [10, 3, 0],
+    },
 }
